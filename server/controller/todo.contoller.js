@@ -22,3 +22,30 @@ export const getAllTodo = async (req, res) => {
     return res.status(400).json(err.message);
   }
 };
+
+export const deleteTodo = async (req, res) => {
+  try {
+    const deletedTodo = await Todo.findByIdAndDelete(req.params.id);
+    return res.status(200).json(deletedTodo);
+  } catch (err) {
+    return res.status(400).json(err.message);
+  }
+};
+
+export const updateTodo = async (req, res) => {
+  try {
+    const updatedTodo = await Todo.findOneAndUpdate(
+      {
+        _id: req.params.id,
+      },
+      {
+        data: req.body.todo,
+      },
+      { new: true } // To get the updated todo as the result
+    ).exec();
+
+    return res.status(200).json(updatedTodo);
+  } catch (err) {
+    return res.status(400).json(err.message);
+  }
+};

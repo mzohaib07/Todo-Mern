@@ -1,25 +1,26 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: "./src/index.js",
-  mode: "development",
+  entry: './src/index.js',
+  mode: 'development',
   output: {
-    filename: "bundle.[fullhash].js",
-    path: path.resolve(__dirname, "dist"),
+    filename: 'bundle.[fullhash].js',
+    path: path.resolve(__dirname, 'dist')
   },
-  devServer : {
+  devServer: {
     port: 3030 // you can change the port
   },
   plugins: [
+    // 'plugin:react-hooks-unreliable-deps/recommended',
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
-    }),
+      template: './src/index.html'
+    })
   ],
   resolve: {
-    modules: [__dirname, "src", "node_modules"],
-    extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+    modules: [__dirname, 'src', 'node_modules'],
+    extensions: ['*', '.js', '.jsx', '.tsx', '.ts']
   },
 
   module: {
@@ -27,18 +28,18 @@ module.exports = {
       {
         test: /\.(js|ts)x?$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader"]
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
         exclude: /node_modules/,
-        use: ["file-loader"]
-      }, 
-    ],
-  },
+        use: ['file-loader']
+      }
+    ]
+  }
 };

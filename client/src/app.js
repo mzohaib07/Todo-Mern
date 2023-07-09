@@ -1,14 +1,13 @@
-import React from "react";
-import Header from "./components/header";
-import TodoForm from "./components/todoForm";
+import { Box } from '@mui/material';
+import Header from './components/header';
+import TodoForm from './components/todo-form/todoForm';
 
 const App = () => {
   return (
-    <div>
-      <h1>Sample Project</h1>
+    <Box>
       <Header />
       <TodoForm />
-    </div>
+    </Box>
   );
 };
 
