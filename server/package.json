@@ -24,9 +24,8 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index",
-    "build": "npm i"
+    "start": "node app.js",
+    "heroku-postbuild":"NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
   "license": "ISC",
